@@ -1,42 +1,45 @@
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.*;
 
 public class Main{
 
-     public static void main(String[] args) {
+     public static void main(String[] args) throws IOException {
 
 
-          Scanner sc = new Scanner(System.in);
-          int n = sc.nextInt(); // 수의 갯수 배열의 길이
-          int m = sc.nextInt(); // 입력받는 합의 수
-          int i;
-          int j;
+          BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+          BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-          int arr [] = new int[n];
-          int sum [] = new int[n];
+          String line1 = br.readLine();
+          StringTokenizer str1 = new StringTokenizer(line1, " ");
+          int n = Integer.parseInt(str1.nextToken());
+          int m = Integer.parseInt(str1.nextToken());
 
-          for(i=0;i<n;i++){
-               arr[i] = sc.nextInt();
+          int a []  = new int[n+1]; //0을 제외한 인덱스로 편하게 접근하기 위함
+          int s [] = new int[n + 1];
+          String line2 = br.readLine();
+          StringTokenizer str2 = new StringTokenizer(line2, " ");
 
-               if(i==0)
-                    sum[i] = arr[i];
-               else
-                    sum[i] = sum[i-1] + arr[i];
+          for(int k = 1; k < a.length ; k++){
+               a[k] = Integer.parseInt(str2.nextToken());
+               s[k] = s[k-1] + a[k];
           }
 
+          for(int t = 0; t < m; t++){
+               String lines = br.readLine();
+               StringTokenizer str3 = new StringTokenizer(lines, " ");
 
-          for(int k = 0;k<m;k++){
-               i = sc.nextInt();
-               j = sc.nextInt();
-               int result;
-               if(i ==1)
-                    result = sum[j-1];
-               else
-                    result = sum[j-1] - sum[i-2];
-               System.out.println(result);
+               int i = Integer.parseInt(str3.nextToken());
+               int j = Integer.parseInt(str3.nextToken());
+
+               String result = String.valueOf(s[j] - s[i-1]);
+               bw.write(result + " \n");
+
           }
+          bw.flush();
+          bw.close();
+          br.close();
+
 
 
 
