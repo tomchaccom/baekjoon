@@ -1,34 +1,24 @@
 import java.io.*;
 import java.util.*;
 
-public class Main{
-
-    public static void main(String []args)  throws IOException{
-
-        int count; // 횟수
-
-
+// 리스트를 입력하고 정렬
+public class Main {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        count = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine()); // 먼저 줄 수를 입력받는다
+        int [] num = new int[n];
 
-        int [] arr = new int[count];
-
-        for(int i=0;i<count;i++){
-            arr[i] = Integer.parseInt(br.readLine());
-        }
-        Arrays.sort(arr);
-
-        for(int num:arr){
-            bw.write(num+"\n");
+        for (int i = 0; i < n; i++) {
+            num[i] = Integer.parseInt(br.readLine());
         }
 
+        Arrays.sort(num);
+
+        for(int k : num){
+            bw.write(k + "\n");
+        }
         bw.flush();
-        bw.close();
-        br.close();
-
-
     }
-
 }
