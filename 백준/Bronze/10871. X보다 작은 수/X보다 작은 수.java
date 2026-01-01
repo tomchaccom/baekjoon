@@ -1,31 +1,35 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-public class Main{
+public class Main{ // 3:28분 
     
-    public static void main(String [] args){
+    public static void main(String []args) throws IOException{
         
-        int N,X; // 수열의 사이즈 N  X보다 작은 수를 수열에서 출력 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st1 = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
         
-        Scanner scanner = new Scanner(System.in);
+        int n = Integer.parseInt(st1.nextToken());
+        int x = Integer.parseInt(st1.nextToken());
         
-        N = scanner.nextInt();
-        X = scanner.nextInt();
         
-        int sequence [] = new int [N];
+        int [] arr = new int[n];
+        
+        StringTokenizer st2 = new StringTokenizer(br.readLine());
+         
+        
+        for(int i = 0; i < n ; i++){
+            arr[i] = Integer.parseInt(st2.nextToken());
             
-        for(int i = 0; i< sequence.length;i++){
-            sequence[i] = scanner.nextInt();
-            
-        }
-        
-        for(int k = 0; k < sequence.length; k++){
-            if(X > sequence[k]){
-                System.out.print(sequence[k]+" ");
+            if(arr[i] < x){
+                sb.append(arr[i]).append(" ");
             }
             
         }
-        scanner.close();
         
+        
+        System.out.println(sb.toString());
     }
-    
+        
+ 
 }
